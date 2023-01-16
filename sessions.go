@@ -78,7 +78,7 @@ func (s *Session) AddFlash(value interface{}, vars ...string) {
 //
 // A single variadic argument is accepted, and it is optional: it defines
 // the flash key. If not defined "_flash" is used by default.
-func (s *Session) ClearFlahses(vars ...string) {
+func (s *Session) ClearFlashes(vars ...string) {
 	key := flashesKey
 	if len(vars) > 0 {
 		key = vars[0]
