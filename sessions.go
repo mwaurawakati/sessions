@@ -74,6 +74,22 @@ func (s *Session) AddFlash(value interface{}, vars ...string) {
 	s.Values[key] = append(flashes, value)
 }
 
+// ClearFlashes empties slice of flash messages from the session.
+//
+// A single variadic argument is accepted, and it is optional: it defines
+// the flash key. If not defined "_flash" is used by default.
+func (s *Session) ClearFlahses(vars ...string) {
+	key := flashesKey
+	if len(vars) > 0 {
+		key = vars[0]
+	}
+	if v, ok := s.Values[key]; ok {
+		// Drop the flashes and return it.
+		delete(s.Values, key)
+
+	}
+}
+
 // Save is a convenience method to save this session. It is the same as calling
 // store.Save(request, response, session). You should call Save before writing to
 // the response or returning from the handler.
