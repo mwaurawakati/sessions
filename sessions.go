@@ -83,7 +83,7 @@ func (s *Session) ClearFlahses(vars ...string) {
 	if len(vars) > 0 {
 		key = vars[0]
 	}
-	if v, ok := s.Values[key]; ok {
+	if _, ok := s.Values[key]; ok {
 		// Drop the flashes and return it.
 		delete(s.Values, key)
 
